@@ -1,15 +1,35 @@
 {
-  "name": "your-game-name-here",
+  "name": "snake-and-ladder-websocket",
   "version": "1.0.0",
   "description": "Game description here",
   "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js"
+    "start": "node -r esm server/server.js",
+    "dev": "nodemon --exec 'node -r esm server/server.js' --watch server"
   },
   "author": "Your Name",
   "dependencies": {
-    "express": "^4.13.0",
-    "socket.io": "^1.3.5"
-  }
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "socket.io": "^3.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "nodemon": "^2.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/husnulhamidiah/node-online-game-template.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/husnulhamidiah/node-online-game-template/issues"
+  },
+  "homepage": "https://github.com/husnulhamidiah/node-online-game-template#readme"
 }

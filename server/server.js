@@ -1,18 +1,21 @@
-var express = require('express');
-var app     = express();
-var http    = require('http').Server(app);
-var io      = require('socket.io')(http);
+import {} from 'dotenv/config'
+import express from 'express'
+import http from 'http'
+import ws from 'socket.io'
+import path from 'path'
 
-var config  = require('./config.json');
+const app = express()
+const server = http.createServer(app)
+const io = ws(server)
 
-app.use(express.static(__dirname + '/../client'));
+app.use(express.static(path.resolve(__dirname, '../client')))
 
-io.on('connection', function (socket) {
-  console.log("Somebody connected!");
+io.on('connection', (socket) => {
+  console.log('Somebody connected!')
   // Write your code here
-});
+})
 
-var serverPort = process.env.PORT || config.port;
-http.listen(serverPort, function() {
-  console.log("Server is listening on port " + serverPort);
-});
+const serverPort = process.env.PORT || 3000
+server.listen(serverPort, () => {
+  console.log('Server is listening on port ' + serverPort)
+})
